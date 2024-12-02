@@ -267,6 +267,10 @@ private void GenerateFeedback(string[] userColors) {
 
             }
             }
+        private void StopGame(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Game is finished!", "FINISG", MessageBoxButton.OK);
+        }
         private void HighScore_Click(object sender, RoutedEventArgs e)
         {
             
@@ -284,13 +288,36 @@ private void GenerateFeedback(string[] userColors) {
 
         private void Afsluiten_Click(object sender, RoutedEventArgs e)
         {
-           
+            this.Close();
 
         }
 
-        private void AantalPogingen_Click(object sender, RoutedEventArgs e)
+        private void AantalPogingen_Click(object sender, KeyEventArgs e)
         {
-
+            int attemptsNumber;
+            attemptsNumber = int.Parse(Interaction.InputBox("How many tries do you want for the game?", "poging"));
+            if (attemptsNumber >= 3 || attemptsNumber <= 20)
+            {
+                if(e.Key >= Key.NumPad0 && e.Key <= Key.NumPad9 )
+                {
+                    e.Handled = false;
+                }
+                else if (e.Key >= Key.D0 && e.Key <= Key.D9 && e.KeyboardDevice.Modifiers == ModifierKeys.Shift) {
+                    e.Handled = false;
+                }
+                else
+                {
+                    e.Handled= true;
+                }
+            }
+            else
+            {
+                MessageBox.Show("inter a number between 3 and 20", "attempts", MessageBoxButton.OK);
+            }
+            while (attempts == attemptsNumber)
+            {
+                StopGame();
+            };
         }
     }
 }
