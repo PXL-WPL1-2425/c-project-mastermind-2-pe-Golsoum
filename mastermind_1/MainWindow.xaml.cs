@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualBasic;
+using System.ComponentModel;
 using System.Text;
 using System.Timers;
 using System.Windows;
@@ -24,7 +25,8 @@ namespace mastermind_1
         int attempts = 1;
         string[] chosenColor = new string[4];
         string[] allColors = { "white", "green", "blue", "red", "orange", "yellow" };
-        string[] users = new string[100]; 
+        int score;
+        string[] userName = new string[15];
         public MainWindow()
         {
             
@@ -253,7 +255,7 @@ private void GenerateFeedback(string[] userColors) {
         }
         private void NieuwSpel_Click(object sender, RoutedEventArgs e)
         {
-            string userName = Interaction.InputBox("Wat is your name?", "Name");
+            userName[0] = Interaction.InputBox("Wat is your name?", "Name");
             if (userName.Length == 0)
             {
                 MessageBox.Show("Add your name", "Error", MessageBoxButton.OKCancel);
@@ -267,6 +269,16 @@ private void GenerateFeedback(string[] userColors) {
             }
         private void HighScore_Click(object sender, RoutedEventArgs e)
         {
+            
+            int[] highestScores = new int[15];
+
+            for (int i = 0; i < highestScores.Length; i++) {
+                if (score > highestScores[i])
+                {
+                    highestScores[i] = score;
+                }
+            }
+            MessageBox.Show($"{userName} - {attempts} pogingen - {highestScores}/100 ");
 
         }
 
