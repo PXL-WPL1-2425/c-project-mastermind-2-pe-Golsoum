@@ -22,7 +22,7 @@
             <MenuItem Name="MenuBestand" Header="Bestand">
                 <MenuItem Name="NieuwSpel" Click="NieuwSpel_Click" />
                 <MenuItem Name="HighScore" Click="HighScore_Click"/>
-                <MenuItem Name="Afsluiten"Click="Afsluiten_Click"/>
+                <MenuItem Name="Afsluiten" Click="Afsluiten_Click"/>
             </MenuItem>
             <MenuItem Header="MenuInstellingen" Header="Instellingen">
                 <MenuItem Name="AantalPogingen" Click="AantalPogingen_Click"/>
